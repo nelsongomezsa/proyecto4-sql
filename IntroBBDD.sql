@@ -68,3 +68,29 @@ GROUP BY city ->> 'en'
 HAVING COUNT(*) > 1
 ORDER BY numero_aeropuertos DESC;
 
+
+-- 7. Cuántos vuelos hay por cada modelo de avión
+SELECT ad.model ->> 'en' AS modelo, COUNT(*) AS numero_vuelos
+FROM bookings.flights f
+JOIN bookings.routes r
+    ON f.route_no = r.route_no
+    AND r.validity @> f.scheduled_departure
+JOIN bookings.airplanes_data ad ON r.airplane_code = ad.airplane_code
+GROUP BY ad.model ->> 'en'
+ORDER BY numero_vuelos DESC;
+
+
+-- 8. Reservas que tienen más de un billete (varios pasajeros)
+SELECT book_ref, COUNT(*) AS numero_billetes
+FROM bookings.tickets
+GROUP BY book_ref
+HAVING COUNT(*) > 1
+ORDER BY numero_billetes DESC;
+
+
+-- 9. Vuelos que salieron con más de una hora de retraso
+SELECT flight_id, scheduled_departure, actual_departure,
+       actual_departure - scheduled_departure AS retraso
+FROM bookings.flights
+WHERE actual_departure - scheduled_departure > interval '1 hour'
+ORDER BY retraso DESC;
