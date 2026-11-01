@@ -47,4 +47,4 @@ lleva `bookings.` delante del nombre de la tabla.
 
 ## Autor
 
-**Nelson Gómez Sánchez** · Estudiante de DAM y del Máster en Data & Analytics · [nelsongomezsa.github.io](https://nelsongomezsa.github.io)
+**Nelson Gómez Sánchez** · Desarrollo de software y datos · Java, SQL y Python · Buscando prácticas en IT en Madrid desde febrero de 2027 · [nelsongomezsa.github.io](https://nelsongomezsa.github.io)
